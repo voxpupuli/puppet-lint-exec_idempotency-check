@@ -16,10 +16,10 @@ jobs:
       ruby: ${{ steps.ruby.outputs.versions }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install Ruby 3.4
+      - name: Install Ruby 3.3
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
+          ruby-version: '3.3'
           bundler-cache: true
       - name: Run RuboCop
         run: bundle exec rake rubocop
