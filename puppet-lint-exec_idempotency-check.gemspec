@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-exec_idempotency-check'
   spec.version     = '2.0.0'
   spec.homepage    = 'https://github.com/voxpupuli/puppet-lint-exec_idempotency-check'
-  spec.license     = 'Apache-2.0'
+  spec.license     = 'GPL-3.0-only'
   spec.author      = 'Vox Pupuli'
   spec.email       = 'voxpupuli@groups.io'
   spec.files       = Dir[
