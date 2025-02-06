@@ -19,7 +19,7 @@ PuppetLint.new_check(:exec_idempotency) do
         line: token.line,
         column: token.column,
         token: token,
-        resource: resource
+        resource: resource,
       }
     end
   end
