@@ -67,7 +67,7 @@ PuppetLint.configuration.send('disable_exec_idempotency')
 
 ## License
 
-This gem is licensed under the Apache-2 license.
+TBD
 
 ## Release information
 
