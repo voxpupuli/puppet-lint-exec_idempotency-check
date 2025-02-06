@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'puppet-lint', '>= 3', '< 5'
   spec.add_development_dependency 'mime-types', '~> 3.4', '>= 3.4.1'
+  spec.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
 end
