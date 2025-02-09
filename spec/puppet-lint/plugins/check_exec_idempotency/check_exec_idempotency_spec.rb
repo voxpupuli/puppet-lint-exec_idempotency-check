@@ -32,16 +32,24 @@ describe 'exec_idempotency' do
     context 'wrong exec resource declarations' do
       let(:code) do
         <<-EOS_WITH_FAILURES
+        EXEC {
+          path => '/bin',
+        }
         exec { '/bin/apt update': }
+        exec { 'foo': }
         EOS_WITH_FAILURES
       end
 
       it 'detects problems' do
-        expect(problems.size).to eq(1)
+        expect(problems.size).to eq(2)
       end
 
-      it 'creates a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(33)
+      it 'creates a first warning' do
+        expect(problems).to contain_warning(msg).on_line(4).in_column(33)
+      end
+
+      it 'creates a second warning' do
+        expect(problems).to contain_warning(msg).on_line(5).in_column(21)
       end
     end
   end
