@@ -1,4 +1,5 @@
-.bundle
-.vendor
-vendor
-Gemfile.lock
+/.bundle/
+/vendor/gems/
+/Gemfile.lock
+vendor/bundle
+.vendor/
