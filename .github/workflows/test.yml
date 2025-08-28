@@ -30,6 +30,7 @@ jobs:
 
   test:
     runs-on: ubuntu-24.04
+    needs: rubocop_and_matrix
     strategy:
       fail-fast: false
       matrix:
