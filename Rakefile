@@ -22,7 +22,15 @@ else
 end
 
 begin
-  require 'voxpupuli/rubocop/rake'
+  require 'rubocop/rake_task'
 rescue LoadError
-  # the voxpupuli-rubocop gem is optional
+  # RuboCop is an optional group
+else
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    # These make the rubocop experience maybe slightly less terrible
+    task.options = ['--display-cop-names', '--display-style-guide', '--extra-details']
+
+    # Use Rubocop's Github Actions formatter if possible
+    task.formatters << 'github' if ENV['GITHUB_ACTIONS'] == 'true'
+  end
 end

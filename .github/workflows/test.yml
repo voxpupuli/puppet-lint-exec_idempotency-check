@@ -6,45 +6,46 @@ on:
   push:
     branches:
       - master
+      - main
 
 permissions:
   contents: read
 
 jobs:
   rubocop_and_matrix:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       ruby: ${{ steps.ruby.outputs.versions }}
-    steps:
-      - uses: actions/checkout@v5
-      - name: Install Ruby 3.3
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3'
-          bundler-cache: true
-      - name: Run RuboCop
-        run: bundle exec rake rubocop
-      - id: ruby
-        uses: voxpupuli/ruby-version@v1
-
-  test:
-    name: "Ruby ${{ matrix.ruby }}"
-    runs-on: ubuntu-latest
-    needs: rubocop_and_matrix
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby: ${{ fromJSON(needs.rubocop_and_matrix.outputs.ruby) }}
     steps:
       - uses: actions/checkout@v5
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Run rake rubocop
+        run: bundle exec rake rubocop
+      - id: ruby
+        uses: voxpupuli/ruby-version@v1
+
+  test:
+    runs-on: ubuntu-24.04
+    needs: rubocop_and_matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ${{ fromJSON(needs.rubocop_and_matrix.outputs.ruby) }}
+    name: Ruby ${{ matrix.ruby }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Run tests
-        run: bundle exec rake
-      - name: Build the gem
+        run: bundle exec rake spec
+      - name: Verify gem builds
         run: gem build --strict --verbose *.gemspec
 
   tests:
