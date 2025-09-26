@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/tree/2.0.0) (2025-09-25)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/compare/1.0.0...2.0.0)
+
+**Breaking changes:**
+
+- Require Ruby 3.2+ & puppet-lint 5.1+ [\#13](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/pull/13) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- modulesync config update [\#12](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/pull/12) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [1.0.0](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/tree/1.0.0) (2025-08-15)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-lint-exec_idempotency-check/compare/7de820cd5f7fd1efd59d34c8ace96369a62a4231...1.0.0)
