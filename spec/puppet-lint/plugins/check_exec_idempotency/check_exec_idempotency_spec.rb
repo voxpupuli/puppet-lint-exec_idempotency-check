@@ -109,7 +109,7 @@ describe 'exec_idempotency' do
       end
     end
 
-    context 'with multiple `;` separated resource bodies including a single non idempotent resources' do
+    context 'with multiple `;` separated resource bodies including a single non idempotent resource' do
       let(:code) do
         <<~CODE
           exec {
@@ -154,7 +154,8 @@ describe 'exec_idempotency' do
 
       it 'detects just one problem' do
         pending(
-          'Detecting whether an exec resource falls inside a resource declarion with default attributes is difficult and currently not supported',
+          'Detecting whether an exec resource falls inside a resource declaration' \
+          'with default attributes is difficult and currently not supported',
         )
         expect(problems.size).to eq(1)
       end
